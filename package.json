@@ -1,0 +1,19 @@
+{
+  "name": "devchat",
+  "version": "1.0.0",
+  "description": "Chat app for developer community",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jzelaya0/devchat.git"
+  },
+  "author": "Jesse Zelaya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jzelaya0/devchat/issues"
+  },
+  "homepage": "https://github.com/jzelaya0/devchat#readme"
+}
