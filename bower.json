@@ -1,0 +1,17 @@
+{
+  "name": "devchat",
+  "description": "Chat app for developer community",
+  "main": "server.js",
+  "authors": [
+    "Jesse Zelaya"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jzelaya0/devchat",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
