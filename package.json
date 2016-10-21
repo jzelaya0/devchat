@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/jzelaya0/devchat/issues"
   },
-  "homepage": "https://github.com/jzelaya0/devchat#readme"
+  "homepage": "https://github.com/jzelaya0/devchat#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.4",
+    "morgan": "^1.7.0"
+  }
 }
