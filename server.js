@@ -9,12 +9,30 @@ let app          = express();
 let path         = require('path');
 let morgan       = require('morgan');
 let bodyParser   = require('body-parser');
+let mongoose     = require('mongoose');
 let env          = require('dotenv').config();
 
 
 // =========================
 // CONFIGURATIONS
 // =========================
+
+// Database connection
+// ====================
+let currentEnv = process.env.NODE_ENV || 'development';
+
+if (currentEnv === 'development') {
+  mongoose.connect(env.DB_LOCAL);
+}else {
+  mongoose.connect(env.DB_HOSTED);
+}
+
+let db = mongoose.connection;
+db.on('error', console.error.bind(console, 'CONNECT TO DATABASE FAILED'));
+db.once('open', function(){
+  console.log('SUCCESSFULLY CONNECTED TO DATABASE');
+});
+
 
 // Middlewares
 // ====================
@@ -39,5 +57,5 @@ app.get('/', function(req, res) {
 // =========================
 // START SERVER
 // =========================
-app.listen(env.PORT)
+app.listen(process.env.PORT || 3000)
 console.log('LISTENING ON PORT', env.PORT);
