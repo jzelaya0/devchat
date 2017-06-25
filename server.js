@@ -4,13 +4,13 @@
 // =========================
 // BASE SET UP
 // =========================
-let express      = require('express');
-let app          = express();
-let path         = require('path');
-let morgan       = require('morgan');
-let bodyParser   = require('body-parser');
-let mongoose     = require('mongoose');
-let env          = require('dotenv').config();
+const express      = require('express');
+const app          = express();
+const path         = require('path');
+const morgan       = require('morgan');
+const bodyParser   = require('body-parser');
+const mongoose     = require('mongoose');
+const env          = require('dotenv').config();
 
 
 // =========================
@@ -19,7 +19,7 @@ let env          = require('dotenv').config();
 
 // Database connection
 // ====================
-let currentEnv = process.env.NODE_ENV || 'development';
+const currentEnv = process.env.NODE_ENV || 'development';
 
 if (currentEnv === 'development') {
   mongoose.connect(env.DB_LOCAL);
@@ -27,7 +27,7 @@ if (currentEnv === 'development') {
   mongoose.connect(env.DB_HOSTED);
 }
 
-let db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'CONNECT TO DATABASE FAILED'));
 db.once('open', function(){
   console.log('SUCCESSFULLY CONNECTED TO DATABASE');
@@ -43,19 +43,19 @@ app.use(bodyParser.json());
 app.use(function(req,res,next){
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST');
-  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type, Authorization');
-})
+  next();
+});
 // Log all requests to console
 app.use(morgan('dev'));
 
 // Temporary root route
 app.get('/', function(req, res) {
-  res.send('Hello World!')
+  res.send('Hello World!');
 });
 
 // =========================
 // START SERVER
 // =========================
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3000);
 console.log('LISTENING ON PORT', env.PORT);
