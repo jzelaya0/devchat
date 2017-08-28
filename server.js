@@ -49,10 +49,12 @@ app.use(function(req,res,next){
 // Log all requests to console
 app.use(morgan('dev'));
 
-// Temporary root route
-app.get('/', function(req, res) {
-  res.send('Hello World!');
-});
+// Get all routes from /app/controllers/index.js
+const apiRoutes = require("./app/controllers");
+
+// routes prefixed with "api"
+app.use('/api', apiRoutes);
+
 
 // =========================
 // START SERVER
